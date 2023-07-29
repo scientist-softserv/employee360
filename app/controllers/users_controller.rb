@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
     if @user == current_user || current_user.admin?
     else
-      redirect_to root_url, alert: "Access denied."
+      redirect_to root_url, alert: 'Access denied.'
     end
   end
 end
