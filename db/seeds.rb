@@ -14,7 +14,7 @@ users_data = [
     review_document: 'Link to review document for user 1',
     last_1_on_1: 'Notes for last 1-on-1 meeting with user 1',
     next_1_on_1: 'Scheduled time for next 1-on-1 meeting with user 1',
-    role: :user # Normal user
+    role: :employee
   },
   {
     email: 'admin@example.com',
@@ -28,7 +28,7 @@ users_data = [
     review_document: 'Link to review document for admin user',
     last_1_on_1: 'Notes for last 1-on-1 meeting with admin user',
     next_1_on_1: 'Scheduled time for next 1-on-1 meeting with admin user',
-    role: :admin # Admin user
+    role: :admin
   },
   # Add more user records as needed
 ]
