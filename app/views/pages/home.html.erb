@@ -13,7 +13,9 @@
           <%= link_to user_path(current_user.id), class: "btn btn-primary btn-lg px-4 me-md-2" do %>
             Profile
           <% end %>
-          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+          <%= link_to user_goals_path(current_user.id), class: "btn btn-secondary btn-lg px-4 me-md-2" do %>
+            Goals
+          <% end %>
         </div>
       <% else %>
         <p class="lead">Please sign in to access your Employee360 portal</p>
