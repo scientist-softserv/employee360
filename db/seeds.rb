@@ -1,6 +1,6 @@
 # db/seeds.rb
 
-# Seed data for users
+# Seed data for users with goals
 users_data = [
   {
     email: 'user1@example.com',
@@ -15,7 +15,12 @@ users_data = [
     last_1_on_1: 'Notes for last 1-on-1 meeting with user 1',
     next_1_on_1: 'Scheduled time for next 1-on-1 meeting with user 1',
     role: :employee,
-    notes: "testing notes block"
+    notes: "testing notes block",
+    goals_attributes: [
+      { title: 'Learn Ruby on Rails', description: 'Build a Ruby on Rails application' },
+      { title: 'Improve JavaScript Skills', description: 'Complete a JavaScript project' }
+      # Add more goals for user1 as needed
+    ]
   },
   {
     email: 'admin@example.com',
@@ -30,12 +35,19 @@ users_data = [
     last_1_on_1: 'Notes for last 1-on-1 meeting with admin user',
     next_1_on_1: 'Scheduled time for next 1-on-1 meeting with admin user',
     role: :admin,
-    notes: "testing notes block"
+    notes: "testing notes block",
+    goals_attributes: [
+      { title: 'Complete Project Management Course', description: 'Improve project management skills' },
+      { title: 'Lead a Team Project', description: 'Manage a team and deliver a successful project' }
+      # Add more goals for admin as needed
+    ]
   },
   # Add more user records as needed
 ]
 
-# Create the users
+# Create the users with associated goals
 users_data.each do |user_data|
-  User.create(user_data)
+  goals_data = user_data.delete(:goals_attributes)
+  user = User.create(user_data)
+  user.goals.create(goals_data) if goals_data.present?
 end
