@@ -10,4 +10,18 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= :user
   end
+
+  # Constructor with new fields
+  def initialize(attributes = {})
+    super
+    @name = attributes[:name]
+    @start_date = attributes[:start_date]
+    @title = attributes[:title]
+    @last_promotion = attributes[:last_promotion]
+    @current_compensation = attributes[:current_compensation]
+    @due_for_promotion = attributes[:due_for_promotion]
+    @review_document = attributes[:review_document]
+    @last_1_on_1 = attributes[:last_1_on_1]
+    @next_1_on_1 = attributes[:next_1_on_1]
+  end
 end

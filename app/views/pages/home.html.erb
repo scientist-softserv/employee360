@@ -1,20 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<% if current_user %>
-  <p>Hello <%= current_user.email %>!</p>
-  <p>You're role is currently set to [<%= current_user.role %>]</p>
-  <% if current_user.admin? %>
-  <br />
-    <p>There are <%= User.count %> Users in the system</p>
-  <% end %>
-  <p>
-    You have successfully authenticated with you Devise account.
-    You are now ready to interact with this application.
-  </p>
-  <%= link_to "Sign out", destroy_user_session_path, 'data-turbo-method': :delete %>
-<% else %>
-    <p>You are not signed in.</p>
-    <%= link_to "Sign Up!", new_user_registration_path %>
-    <%= link_to "Login", new_user_session_path %>
-<% end %>
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6 text-center">
+      <%= image_tag("scientist-logo.png") %>
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Employee360 Portal</h1>
+      <% if current_user %>
+        <h2>Hello <%= current_user.name %>!</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget aliquet nibh praesent tristique magna sit amet purus gravida. Pulvinar pellentesque habitant morbi tristique senectus.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+        </div>
+      <% else %>
+        <p class="lead">Please sign in to access your Employee360 portal</p>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>
