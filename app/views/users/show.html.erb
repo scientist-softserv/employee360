@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.name %>'s Profile</h1>
+
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+<p>Start Date: <%= @user.start_date %></p>
+<p>Title: <%= @user.title %></p>
+<p>Last Promotion: <%= @user.last_promotion %></p>
+<p>Current Compensation: <%= @user.current_compensation %></p>
+<p>Due for Promotion: <%= @user.due_for_promotion %></p>
+<p>Review Document: <%= @user.review_document %></p>
+<p>Last 1-on-1: <%= @user.last_1_on_1 %></p>
+<p>Next 1-on-1: <%= @user.next_1_on_1 %></p>
+<p>Notes:</p>
+<%= simple_format(@user.notes) %>

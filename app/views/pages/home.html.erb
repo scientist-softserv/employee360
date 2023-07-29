@@ -6,10 +6,13 @@
     <div class="col-lg-6">
       <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Employee360 Portal</h1>
       <% if current_user %>
-        <h2>Hello <%= current_user.id %>!</h2>
+        <h2>Hello <%= current_user.name %>!</h2>
         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget aliquet nibh praesent tristique magna sit amet purus gravida. Pulvinar pellentesque habitant morbi tristique senectus.</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
+
+          <%= link_to user_path(current_user.id), class: "btn btn-primary btn-lg px-4 me-md-2" do %>
+            Profile
+          <% end %>
           <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
         </div>
       <% else %>
