@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group m-1">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group m-1">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: "form-control", rows: 3 %>
   </div>
 
-  <div class="field">
+  <div class="form-group m-1">
     <%= form.label :due_date %>
     <%= form.date_field :due_date %>
   </div>
 
-  <div class="actions">
+  <div class="form-group actions">
     <%= form.submit "Save Changes", class: "btn btn-secondary m-1" %>
   </div>
 <% end %>
