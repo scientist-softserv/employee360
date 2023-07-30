@@ -1,0 +1,20 @@
+<h1>Admin Dashboard - All Users</h1>
+
+<div class="row">
+  <% @users.each do |user| %>
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= user.name %></h5>
+          <p class="card-text"><strong>Email:</strong> <%= user.email %></p>
+          <%= link_to "Profile", user_path(user), class: "btn btn-primary me-1" %>
+          <%= link_to "Goals", user_goals_path(user, @goal), class: "btn btn-success me-1" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= button_to "Back to Portal", root_url, class: "btn btn-primary me-1", method: :get %>
+</div>

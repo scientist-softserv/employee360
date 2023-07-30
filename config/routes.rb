@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: 'users#show', as: 'user'
 
+  get 'admin/dashboard', to: 'admin_dashboard#index', as: 'admin_dashboard'
+
   resources :users do
     resources :goals
     member do

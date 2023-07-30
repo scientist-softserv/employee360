@@ -9,7 +9,6 @@
         <h2>Hello <%= current_user.name %>!</h2>
         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget aliquet nibh praesent tristique magna sit amet purus gravida. Pulvinar pellentesque habitant morbi tristique senectus.</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-
           <%= link_to user_path(current_user.id), class: "btn btn-primary btn-lg px-4 me-md-2" do %>
             Profile
           <% end %>
@@ -17,14 +16,15 @@
             Goals
           <% end %>
           <% if current_user.admin? %>
-           <a href="#" class="btn btn-warning btn-lg px-4 me-md-2">Employees</a>
+            <%= link_to admin_dashboard_path(current_user.id), class: "btn btn-warning btn-lg px-4 me-md-2" do %>
+              Admin Area
+            <% end %>
           <% end %>
         </div>
       <% else %>
         <p class="lead">Please sign in to access your Employee360 portal</p>
         <%= link_to "Login", new_user_session_path, class: 'btn btn-success' %>
       <% end %>
-    </div>
     </div>
   </div>
 </div>
