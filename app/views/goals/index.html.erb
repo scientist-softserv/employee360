@@ -12,6 +12,7 @@
   </div>
   <hr>
 <% end %>
-
-<%= button_to "New Goal", new_user_goal_path(@user), class: "btn btn-success", method: :get %>
-
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= button_to "Back to Portal", root_url, class: "btn btn-primary me-1", method: :get %>
+  <%= button_to "New Goal", new_user_goal_path(@user), class: "btn btn-success me-1", method: :get %>
+</div>

@@ -38,10 +38,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_230636) do
     t.string "title"
     t.date "last_promotion"
     t.decimal "current_compensation"
-    t.date "due_for_promotion"
+    t.boolean "due_for_promotion"
     t.string "review_document"
-    t.string "last_1_on_1"
-    t.string "next_1_on_1"
+    t.date "last_1_on_1"
+    t.date "next_1_on_1"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

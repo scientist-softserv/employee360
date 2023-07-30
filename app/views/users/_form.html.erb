@@ -1,0 +1,77 @@
+<%= form_with(model: @user, local: true) do |form| %>
+  <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :email %>
+          <%= form.email_field :email, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :start_date %>
+          <%= form.date_field :start_date, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :title %>
+          <%= form.text_field :title, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :last_promotion %>
+          <%= form.date_field :last_promotion, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :current_compensation %>
+          <%= form.number_field :current_compensation, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col my-auto">
+        <div class="form-check">
+          <%= form.check_box :due_for_promotion, class: "form-check-input", id: "gridCheck" %>
+          <%= form.label :due_for_promotion, "Due for Promotion?", class: "form-check-label" %>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :review_document %>
+          <%= form.text_field :review_document, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :last_1_on_1 %>
+          <%= form.date_field :last_1_on_1, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :next_1_on_1 %>
+          <%= form.date_field :next_1_on_1, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="btn-group m-2" role="group" aria-label="Basic example">
+      <%= button_to "Back to Profile", user_path(@user), class: "btn btn-success m-1", method: :get %>
+      <%= form.submit "Save Changes", class: "btn btn-primary m-1" %>
+    </div>
+<% end %>

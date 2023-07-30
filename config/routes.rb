@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :goals
+    member do
+      get 'edit', to: 'users#edit'
+      patch 'update', to: 'users#update'
+    end
   end
 
   root 'pages#home'

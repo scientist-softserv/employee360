@@ -10,3 +10,10 @@
 <p>Review Document: <%= @user.review_document %></p>
 <p>Last 1-on-1: <%= @user.last_1_on_1 %></p>
 <p>Next 1-on-1: <%= @user.next_1_on_1 %></p>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= button_to "Back to Portal", root_url, class: "btn btn-primary me-1", method: :get %>
+  <% if current_user.admin? %>
+    <%= button_to "Edit Profile", edit_user_path(@user), class: "btn btn-success me-1", method: :get  %>
+  <% end %>
+</div>
