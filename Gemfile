@@ -74,3 +74,5 @@ end
 gem "devise", "~> 4.9"
 
 gem "bootstrap", "~> 5.2"
+
+gem 'faker', '~> 2.20'
