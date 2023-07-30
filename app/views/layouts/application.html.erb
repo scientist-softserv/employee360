@@ -16,7 +16,13 @@
       <%= render 'layouts/navbar' %>
       <!-- Flash messages display -->
       <% flash.each do |key, message| %>
-        <div class="alert alert-danger" role="alert"><%= message %></div>
+        <% css_class = case key.to_sym
+                       when :notice then 'alert alert-success' # Green for notices
+                       when :alert, :error then 'alert alert-danger' # Red for alerts and errors
+                       else 'alert alert-info' # Blue (or any other default style) for other types
+                       end %>
+
+        <div class="<%= css_class %>" role="alert"><%= message %></div>
       <% end %>
       <%= yield %>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

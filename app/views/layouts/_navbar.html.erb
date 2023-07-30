@@ -7,11 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <% #= link_to "Employee Profile", add_path_here, class: 'nav-link' %>
+          <% #= link_to "Profile", add_path_here, class: 'nav-link' %>
           <% #= link_to "Salary and Title History", add_path_here, class: 'nav-link' %>
-          <% #= link_to "Actionable Goals", add_path_here, class: 'nav-link' %>
+
         </li>
       </ul>
+      <% # = link_to "Goals", user_goals_path(current_user.id), class: 'nav-link me-4' %>
       <% if current_user %>
         <%= link_to "Sign out", destroy_user_session_path, 'data-turbo-method': :delete, class: 'btn btn-success' %>
       <% else %>

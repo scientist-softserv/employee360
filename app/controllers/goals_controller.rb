@@ -1,17 +1,18 @@
+# app/controllers/goals_controller.rb
 class GoalsController < ApplicationController
+  before_action :set_user
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
   def index
-    # binding.pry # Execution will pause here, and you can inspect @user and params[:user_id]
-    @user = User.find(params[:user_id])
     @goals = @user.goals
   end
 
   def show
-    # Show individual goal details if needed
+    # This will automatically render the 'show.html.erb' template
   end
 
   def new
+    @user = User.find(params[:user_id])
     @goal = @user.goals.build
   end
 
@@ -19,19 +20,19 @@ class GoalsController < ApplicationController
     @goal = @user.goals.build(goal_params)
 
     if @goal.save
-      redirect_to user_goals_path(@user), notice: 'Goal was successfully created.'
+      redirect_to user_goals_path(@user, @goal), notice: 'Goal was successfully created.'
     else
       render :new
     end
   end
 
   def edit
-    # Edit goal details if needed
+    # This will automatically render the 'edit.html.erb' template
   end
 
   def update
     if @goal.update(goal_params)
-      redirect_to user_goals_path(@goal.user), notice: 'Goal was successfully updated.'
+      redirect_to user_goal_path(@user, @goal), notice: 'Goal was successfully updated.'
     else
       render :edit
     end
@@ -39,16 +40,20 @@ class GoalsController < ApplicationController
 
   def destroy
     @goal.destroy
-    redirect_to user_goals_path(@goal.user), notice: 'Goal was successfully destroyed.'
+    redirect_to user_goals_path(@user), notice: 'Goal was successfully destroyed.'
   end
 
   private
 
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
   def set_goal
-    @goal = Goal.find(params[:id])
+    @goal = @user.goals.find(params[:id])
   end
 
   def goal_params
-    params.require(:goal).permit(:title, :description)
+    params.require(:goal).permit(:title, :description, :due_date)
   end
 end

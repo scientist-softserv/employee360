@@ -10,6 +10,5 @@ class AddNewFieldsToUsers < ActiveRecord::Migration[7.0]
     add_column :users, :review_document, :string
     add_column :users, :last_1_on_1, :string
     add_column :users, :next_1_on_1, :string
-    add_column :users, :notes, :text
   end
 end

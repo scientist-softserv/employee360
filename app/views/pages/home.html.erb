@@ -16,6 +16,9 @@
           <%= link_to user_goals_path(current_user.id), class: "btn btn-secondary btn-lg px-4 me-md-2" do %>
             Goals
           <% end %>
+          <% if current_user.admin? %>
+           <a href="#" class="btn btn-warning btn-lg px-4 me-md-2">Employees</a>
+          <% end %>
         </div>
       <% else %>
         <p class="lead">Please sign in to access your Employee360 portal</p>
