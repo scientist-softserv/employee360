@@ -1,19 +1,23 @@
-<h1><%= @user.name %>'s Profile</h1>
-
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
-<p>Start Date: <%= @user.start_date %></p>
-<p>Title: <%= @user.title %></p>
-<p>Last Promotion: <%= @user.last_promotion %></p>
-<p>Current Compensation: <%= @user.current_compensation %></p>
-<p>Due for Promotion: <%= @user.due_for_promotion %></p>
-<p>Review Document: <%= @user.review_document %></p>
-<p>Last 1-on-1: <%= @user.last_1_on_1 %></p>
-<p>Next 1-on-1: <%= @user.next_1_on_1 %></p>
-
-<div class="btn-group" role="group" aria-label="Basic example">
-  <%= button_to "Back to Portal", root_url, class: "btn btn-primary me-1", method: :get %>
-  <% if current_user.admin? %>
-    <%= button_to "Edit Profile", edit_user_path(@user), class: "btn btn-success me-1", method: :get  %>
+<div class="container m-1">
+  <h1><%= @user.name %></h1>
+  <h4>Title: <%= @user.title %></h4>
+  <p><%= @user.email %></p>
+  <p>Start Date: <%= @user.start_date %></p>
+  <p>Last Promotion: <%= @user.last_promotion %></p>
+  <p>Current Compensation: <%= @user.current_compensation %></p>
+  <p>Due for Promotion: <%= @user.due_for_promotion %></p>
+  <p>Review Document:
+  <%= link_to @user.review_document, target: "_blank" do %>
+    Link
   <% end %>
+  </p>
+  <p>Last 1-on-1: <%= @user.last_1_on_1 %></p>
+  <p>Next 1-on-1: <%= @user.next_1_on_1 %></p>
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <%= button_to "Employee360 Portal", root_url, class: "btn btn-primary me-1", method: :get %>
+    <% if current_user.admin? %>
+      <%= button_to "Edit Profile", edit_user_path(@user), class: "btn btn-success me-1", method: :get  %>
+    <% end %>
+  </div>
 </div>

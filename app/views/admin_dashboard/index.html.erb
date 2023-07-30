@@ -1,4 +1,4 @@
-<h1>Admin Dashboard - All Users</h1>
+<h1>Admin Area - All Users</h1>
 
 <div class="row">
   <% @users.each do |user| %>
@@ -16,5 +16,6 @@
 </div>
 
 <div class="btn-group" role="group" aria-label="Basic example">
-  <%= button_to "Back to Portal", root_url, class: "btn btn-primary me-1", method: :get %>
+  <%= button_to "Employee360 Portal", root_url, class: "btn btn-secondary me-1", method: :get %>
+  <%= button_to "Admin Area", root_url, class: "btn btn-warning me-1", method: :get %>
 </div>

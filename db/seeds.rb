@@ -1,14 +1,16 @@
-# db/seeds.rb
-
 require 'faker'
-
-# Seed data for users with goals
-users_data = []
 
 # Helper method to generate random date within a range
 def random_date(from, to)
   rand(from..to)
 end
+
+# Helper method to generate a random internet URL link
+def random_url
+  Faker::Internet.url
+end
+
+users_data = []
 
 # Create 10 random users
 10.times do
@@ -21,7 +23,7 @@ end
     last_promotion: random_date(Date.new(2019, 1, 1), Date.new(2023, 1, 1)),
     current_compensation: rand(60_000..120_000),
     due_for_promotion: Faker::Boolean.boolean(true_ratio: 0.5).to_s,
-    review_document: "Link to review document for #{Faker::Name.first_name}",
+    review_document: random_url,
     last_1_on_1: random_date(Date.new(2022, 1, 1), Date.new(2023, 1, 1)),
     next_1_on_1: random_date(Date.new(2022, 1, 1), Date.new(2023, 1, 1)),
     role: :employee,
@@ -43,7 +45,7 @@ end
     last_promotion: random_date(Date.new(2019, 1, 1), Date.new(2023, 1, 1)),
     current_compensation: rand(80_000..150_000),
     due_for_promotion: Faker::Boolean.boolean(true_ratio: 0.5).to_s,
-    review_document: "Link to review document for #{Faker::Name.first_name}",
+    review_document: random_url,
     last_1_on_1: random_date(Date.new(2022, 1, 1), Date.new(2023, 1, 1)),
     next_1_on_1: random_date(Date.new(2022, 1, 1), Date.new(2023, 1, 1)),
     role: :admin,
@@ -54,7 +56,6 @@ end
   }
 end
 
-# Additional provided admin record
 users_data << {
   email: 'admin@example.com',
   password: 'testing123',
@@ -64,7 +65,7 @@ users_data << {
   last_promotion: Date.new(2021, 7, 15),
   current_compensation: 100000,
   due_for_promotion: "true",
-  review_document: 'Link to review document for admin user',
+  review_document: random_url,
   last_1_on_1: Date.new(2022, 6, 30),
   next_1_on_1: Date.new(2022, 6, 30),
   role: :admin,
@@ -74,6 +75,7 @@ users_data << {
     # Add more goals for admin as needed
   ]
 }
+
 users_data << {
   email: 'user@example.com',
   password: 'testing123',
@@ -83,7 +85,7 @@ users_data << {
   last_promotion: Date.new(2022, 6, 30),
   current_compensation: 75000,
   due_for_promotion: "false",
-  review_document: 'Link to review document for user 1',
+  review_document: random_url,
   last_1_on_1: Date.new(2022, 6, 30),
   next_1_on_1: Date.new(2022, 6, 30),
   role: :employee,

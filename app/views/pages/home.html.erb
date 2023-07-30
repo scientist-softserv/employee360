@@ -12,7 +12,7 @@
           <%= link_to user_path(current_user.id), class: "btn btn-primary btn-lg px-4 me-md-2" do %>
             Profile
           <% end %>
-          <%= link_to user_goals_path(current_user.id), class: "btn btn-secondary btn-lg px-4 me-md-2" do %>
+          <%= link_to user_goals_path(current_user.id), class: "btn btn-success btn-lg px-4 me-md-2" do %>
             Goals
           <% end %>
           <% if current_user.admin? %>
@@ -22,7 +22,7 @@
           <% end %>
         </div>
       <% else %>
-        <p class="lead">Please sign in to access your Employee360 portal</p>
+        <p class="lead">Please sign in to access your Employee360 Portal</p>
         <%= link_to "Login", new_user_session_path, class: 'btn btn-success' %>
       <% end %>
     </div>
