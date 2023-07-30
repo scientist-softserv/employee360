@@ -1,0 +1,43 @@
+---
+{{- $releaseName := .Release.Name -}}
+{{- $serviceName := include "app.fullname" . -}}
+{{- $beta := semverCompare "<1.19-0" (default .Capabilities.KubeVersion.Version .Values.kubeVersion) -}}
+{{- if $beta }}
+apiVersion: networking.k8s.io/v1beta1
+{{- else }}
+apiVersion: networking.k8s.io/v1
+{{- end }}
+kind: Ingress
+metadata:
+  name: {{ template "app.web.name" . }}-in
+  annotations:
+  {{- range $key, $value := .Values.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
+spec:
+  rules:
+  {{- range .Values.ingress.hosts }}
+  - host: {{ . | quote }}
+    http:
+      paths:
+      - backend:
+          {{- if $beta }}
+          serviceName: {{ printf "%s" $serviceName | trunc 63 | trimSuffix "-" }}-web
+          servicePort: 80
+          {{- else }}
+          service:
+            name: {{ printf "%s" $serviceName | trunc 63 | trimSuffix "-" }}-web
+            port:
+              number: 80
+          {{- end }}
+        path: /exhibitions
+        pathType: ImplementationSpecific
+  {{- end }}
+  {{- if .Values.ingress.tlsSecretName }}
+  tls:
+  - secretName: {{ .Values.ingress.tlsSecretName }}
+    hosts:
+      {{- range .Values.ingress.hosts }}
+      - {{ . | quote }}
+      {{- end }}
+  {{- end }}

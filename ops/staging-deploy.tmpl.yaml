@@ -1,0 +1,45 @@
+# Customize the following values as needed
+
+web:
+  replicas: 1
+
+rails:
+  image:
+    repository: ghcr.io/scientist-softserv/employee360
+    tag: $TAG
+  # If using a private registry setup access via secrets
+  imagePullPolicy: IfNotPresent
+  imagePullSecrets:
+    - name: github
+  shared:
+    storage:
+      size: 20Gi
+      className: nfs
+
+ingress:
+  enabled: true
+  hosts:
+    - employee360-staging.notch8.cloud
+  annotations: {
+    kubernetes.io/ingress.class: "nginx",
+    nginx.ingress.kubernetes.io/proxy-body-size: "0",
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  }
+  tlsSecretName: employee360-staging-tls
+
+env:
+  configmap:
+    DB_HOST: pg-postgresql.staging-postgres.svc.cluster.local
+    DB_NAME: employee360-staging
+    DB_PASSWORD: $DB_PASSWORD
+    DB_PORT: 5432
+    DB_USERNAME: postgres
+    NAME: employee360-staging
+
+externalPostgresql:
+  host: pg-postgresql.staging-postgres.svc.cluster.local
+  username: postgres
+  password: $DB_PASSWORD
+
+postgresql:
+  enabled: false
