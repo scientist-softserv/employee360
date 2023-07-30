@@ -6,7 +6,7 @@ web:
 rails:
   image:
     repository: ghcr.io/scientist-softserv/employee360
-    tag: $TAG
+    tag: latest
   # If using a private registry setup access via secrets
   imagePullPolicy: IfNotPresent
   imagePullSecrets:
@@ -33,8 +33,8 @@ env:
     DB_NAME: employee360-staging
     DB_PASSWORD: $DB_PASSWORD
     DB_PORT: 5432
-    DB_USERNAME: postgres
-    NAME: employee360-staging
+    DB_USER: postgres
+    NAME: employee360
 
 externalPostgresql:
   host: pg-postgresql.staging-postgres.svc.cluster.local

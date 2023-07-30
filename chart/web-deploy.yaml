@@ -58,4 +58,4 @@ spec:
             - configMapRef:
                 name: {{ template "app.rails-env.name" . }}-cm
             - secretRef:
-                name: {{ template "app.rails-env.name" . }}-secret
+                name: {{ template "app.rails-env.name" }}-secret

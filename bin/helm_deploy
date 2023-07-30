@@ -9,36 +9,16 @@ fi
 release_name="${1}"
 namespace="${2}"
 
-
-TAG="${TAG:-latest}"
-
-# Extract the environment from the namespace
-# Check if the namespace contains a hyphen ("-")
-if [[ "$namespace" == *-* ]]; then
-    # If it contains a hyphen, extract the part after the last hyphen as the environment
-    environment="${namespace##*-}"
-fi
-
-deploy_file="${environment}-deploy"
-HELM_EXTRA_ARGS="--values ops/${deploy_file}.yaml"
-
-# Export key-value pairs from the env file to use with envsubst during deployment
-ENV_FILE="./.env.${environment}"
-if [ ! -f "$ENV_FILE" ]; then
-  touch "$ENV_FILE"
-  echo "$ENCODED_ENV_FILE" | base64 -d > "$ENV_FILE"
-fi
-
-while IFS='=' read -r key value; do
-  export "$key=${value//\"/}"
-done < <(grep -v '^#' "$ENV_FILE")
-
-DOLLAR=$ envsubst <"ops/${deploy_file}.tmpl.yaml" >"ops/${deploy_file}.yaml"
+DEPLOY_IMAGE="${DEPLOY_IMAGE:-ghcr.io/scientist-softserv/employee360}"
+DEPLOY_TAG="${DEPLOY_TAG:-latest}"
+echo $DEPLOY_TAG
 
 helm upgrade \
     --install \
     --atomic \
     --timeout 15m0s \
+    --set rails.image.repository="$DEPLOY_IMAGE" \
+    --set rails.image.tag="$DEPLOY_TAG" \
     $HELM_EXTRA_ARGS \
     $DRY_RUN_DEBUG \
     --namespace="$namespace" \

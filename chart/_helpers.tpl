@@ -38,8 +38,8 @@ Shorthand for component names
 {{- define "app.web.name" -}}
 {{- include "app.fullname" . -}}-web
 {{- end -}}
-{{- define "app.php-env.name" -}}
-{{- include "app.fullname" . -}}-php-env
+{{- define "app.rails-env.name" -}}
+{{- include "app.fullname" . -}}-rails-env
 {{- end -}}
 {{- define "app.setup.name" -}}
 {{- include "app.fullname" . -}}-setup
