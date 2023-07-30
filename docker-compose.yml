@@ -1,0 +1,43 @@
+version: '3.9'
+
+x-app: &app
+  build:
+    context: .
+    target: web
+  image: ghcr.io/scientist-softserv/employee360:${TAG:-latest}
+  env_file:
+    - .env
+  volumes:
+    - .:/app
+
+services:
+  web:
+    <<: *app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=${DB_ADAPTER}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
+
+  db:
+    image: postgres:13.3
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_PASSWORD}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  initialize_app:
+    <<: *app
+    entrypoint: ["sh", "-c"]
+    command:
+      - >
+        rails db:create && rails db:migrate && rails db:seed
+    depends_on:
+      db:
+        condition: service_started
+
+volumes:
+  pg_data:
