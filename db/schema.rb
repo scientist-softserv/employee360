@@ -43,10 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_053834) do
     t.date "last_1_on_1"
     t.date "next_1_on_1"
     t.string "github_handle"
-    t.string "title_history", default: [], array: true
-    t.string "compensation_history", default: [], array: true
-    t.string "title_or_compensation_change_date", default: [], array: true
-    t.string "title_or_compensation_change_reason", default: [], array: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
