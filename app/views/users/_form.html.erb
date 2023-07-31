@@ -48,7 +48,12 @@
           <%= form.label :due_for_promotion, "Due for Promotion?", class: "form-check-label" %>
         </div>
       </div>
-
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :github_handle %>
+          <%= form.text_field :github_handle, class: "form-control" %>
+        </div>
+      </div>
       <div class="col">
         <div class="form-group">
           <%= form.label :review_document %>
