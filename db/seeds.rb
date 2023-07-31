@@ -16,6 +16,7 @@ users_data = []
 10.times do
   users_data << {
     email: Faker::Internet.email,
+    github_handle: Faker::Internet.user_name(specifier: 5..15),
     password: 'testing123',
     name: Faker::Name.name,
     start_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 1, 1)),
@@ -38,6 +39,7 @@ end
 2.times do
   users_data << {
     email: Faker::Internet.email,
+    github_handle: Faker::Internet.user_name(specifier: 5..15),
     password: 'testing123',
     name: Faker::Name.name,
     start_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 1, 1)),
@@ -58,6 +60,7 @@ end
 
 users_data << {
   email: 'admin@example.com',
+  github_handle: Faker::Internet.user_name(specifier: 5..15),
   password: 'testing123',
   name: 'Robot Kaufamn',
   start_date: Date.new(2020, 3, 5),
@@ -78,6 +81,7 @@ users_data << {
 
 users_data << {
   email: 'user@example.com',
+  github_handle: Faker::Internet.user_name(specifier: 5..15),
   password: 'testing123',
   name: 'Developer Jane',
   start_date: Date.new(2021, 1, 15),

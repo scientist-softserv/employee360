@@ -1,11 +1,11 @@
 <div class="container m-1">
   <h1><%= @user.name %></h1>
   <h4>Title: <%= @user.title %></h4>
-  <p><%= @user.email %></p>
+  <p>Email: <%= @user.email %></p>
+  <p>GitHub: <%= @user.github_handle %></p>
   <p>Start Date: <%= @user.start_date %></p>
   <p>Last Promotion: <%= @user.last_promotion %></p>
   <p>Current Compensation: <%= @user.current_compensation %></p>
-  <p>Due for Promotion: <%= @user.due_for_promotion %></p>
   <p>Review Document:
   <%= link_to @user.review_document, target: "_blank" do %>
     Link
@@ -13,6 +13,10 @@
   </p>
   <p>Last 1-on-1: <%= @user.last_1_on_1 %></p>
   <p>Next 1-on-1: <%= @user.next_1_on_1 %></p>
+
+  <% if current_user.admin? %>
+    <p>Due for Promotion: <%= @user.due_for_promotion %></p>
+  <% end %>
 
   <div class="btn-group" role="group" aria-label="Basic example">
     <%= button_to "Employee360 Portal", root_url, class: "btn btn-primary me-1", method: :get %>

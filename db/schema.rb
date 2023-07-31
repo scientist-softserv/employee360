@@ -42,6 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_230636) do
     t.string "review_document"
     t.date "last_1_on_1"
     t.date "next_1_on_1"
+    t.string "github_handle"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

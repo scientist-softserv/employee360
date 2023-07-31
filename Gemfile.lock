@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 82a1dbe2ee6b50240f8d61d800c1af271f745d2c
+  branch: main
+  specs:
+    faker (3.2.0)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -102,8 +110,6 @@ GEM
       warden (~> 1.2.3)
     erubi (1.12.0)
     execjs (2.8.1)
-    faker (2.23.0)
-      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -252,7 +258,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9)
-  faker (~> 2.20)
+  faker!
   importmap-rails
   jbuilder
   pg (~> 1.1)
