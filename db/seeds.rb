@@ -45,7 +45,15 @@ users_data = []
     goals_attributes: [
       { title: Faker::Lorem.sentence(word_count: 3), description: Faker::Lorem.paragraph, due_date: random_date(Date.new(2023, 1, 1), Date.new(2024, 1, 1)) },
       { title: Faker::Lorem.sentence(word_count: 3), description: Faker::Lorem.paragraph, due_date: random_date(Date.new(2023, 1, 1), Date.new(2024, 1, 1)) }
-    ]
+    ],
+    title_history: [Faker::Job.title, Faker::Job.title, Faker::Job.title],
+    compensation_history: ["$#{Faker::Number.between(from: 50000, to: 100000)}", "$#{Faker::Number.between(from: 60000, to: 120000)}", "$#{Faker::Number.between(from: 70000, to: 140000)}"],
+    title_or_compensation_change_date: [
+      Faker::Date.between(from: 2.years.ago, to: 1.year.ago).to_s,
+      Faker::Date.between(from: 1.year.ago, to: 6.months.ago).to_s,
+      Faker::Date.between(from: 6.months.ago, to: Date.today).to_s
+    ],
+    title_or_compensation_change_reason: [Faker::Lorem.sentence, Faker::Lorem.sentence, Faker::Lorem.sentence]
   }
 end
 
@@ -68,7 +76,15 @@ end
     goals_attributes: [
       { title: Faker::Lorem.sentence(word_count: 3), description: Faker::Lorem.paragraph, due_date: random_date(Date.new(2023, 1, 1), Date.new(2024, 1, 1)) },
       { title: Faker::Lorem.sentence(word_count: 3), description: Faker::Lorem.paragraph, due_date: random_date(Date.new(2023, 1, 1), Date.new(2024, 1, 1)) }
-    ]
+    ],
+    title_history: [Faker::Job.title, Faker::Job.title, Faker::Job.title],
+    compensation_history: ["$#{Faker::Number.between(from: 50000, to: 100000)}", "$#{Faker::Number.between(from: 60000, to: 120000)}", "$#{Faker::Number.between(from: 70000, to: 140000)}"],
+    title_or_compensation_change_date: [
+      Faker::Date.between(from: 2.years.ago, to: 1.year.ago).to_s,
+      Faker::Date.between(from: 1.year.ago, to: 6.months.ago).to_s,
+      Faker::Date.between(from: 6.months.ago, to: Date.today).to_s
+    ],
+    title_or_compensation_change_reason: [Faker::Lorem.sentence, Faker::Lorem.sentence, Faker::Lorem.sentence]
   }
 end
 
@@ -89,8 +105,15 @@ users_data << {
   goals_attributes: [
     { title: 'Complete Project Management Course', description: 'Improve project management skills', due_date: Date.new(2023, 3, 15) },
     { title: 'Lead a Team Project', description: 'Manage a team and deliver a successful project', due_date: Date.new(2023, 4, 30) }
-    # Add more goals for admin as needed
-  ]
+  ],
+  title_history: [Faker::Job.title, Faker::Job.title, Faker::Job.title],
+  compensation_history: ["$#{Faker::Number.between(from: 50000, to: 100000)}", "$#{Faker::Number.between(from: 60000, to: 120000)}", "$#{Faker::Number.between(from: 70000, to: 140000)}"],
+  title_or_compensation_change_date: [
+    Faker::Date.between(from: 2.years.ago, to: 1.year.ago).to_s,
+    Faker::Date.between(from: 1.year.ago, to: 6.months.ago).to_s,
+    Faker::Date.between(from: 6.months.ago, to: Date.today).to_s
+  ],
+  title_or_compensation_change_reason: [Faker::Lorem.sentence, Faker::Lorem.sentence, Faker::Lorem.sentence]
 }
 
 users_data << {
@@ -110,10 +133,17 @@ users_data << {
   goals_attributes: [
     { title: 'Learn Ruby on Rails', description: 'Build a Ruby on Rails application', due_date: Date.new(2023, 1, 15) },
     { title: 'Improve JavaScript Skills', description: 'Complete a JavaScript project', due_date: Date.new(2023, 2, 28) }
-  ]
+  ],
+  title_history: [Faker::Job.title, Faker::Job.title, Faker::Job.title],
+  compensation_history: ["$#{Faker::Number.between(from: 50000, to: 100000)}", "$#{Faker::Number.between(from: 60000, to: 120000)}", "$#{Faker::Number.between(from: 70000, to: 140000)}"],
+  title_or_compensation_change_date: [
+    Faker::Date.between(from: 2.years.ago, to: 1.year.ago).to_s,
+    Faker::Date.between(from: 1.year.ago, to: 6.months.ago).to_s,
+    Faker::Date.between(from: 6.months.ago, to: Date.today).to_s
+  ],
+  title_or_compensation_change_reason: [Faker::Lorem.sentence, Faker::Lorem.sentence, Faker::Lorem.sentence]
 }
 
-# Create the users with associated goals
 users_data.each do |user_data|
   goals_data = user_data.delete(:goals_attributes)
   user = User.create!(user_data)

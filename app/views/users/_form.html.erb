@@ -75,6 +75,22 @@
         </div>
       </div>
     </div>
+    <div class="form-group">
+      <%= form.label :title_history %><br/>
+      <%= form.text_area :title_history, value: @title_history.join(', '), rows: 3, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :compensation_history %>
+      <%= form.text_area :compensation_history, value: @compensation_history.join(', '), rows: 3, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :title_or_compensation_change_date %>
+      <%= form.text_area :title_or_compensation_change_date, value: @change_dates.join(', '), rows: 3, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :title_or_compensation_change_reason %>
+      <%= form.text_area :title_or_compensation_change_reason, value: @change_reasons.join(', '), rows: 3, class: "form-control" %>
+    </div>
     <div class="btn-group m-2" role="group" aria-label="Basic example">
       <%= button_to "Back to Profile", user_path(@user), class: "btn btn-success m-1", method: :get %>
       <%= form.submit "Save Changes", class: "btn btn-primary m-1" %>
