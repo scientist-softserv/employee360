@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_230636) do
     t.date "start_date"
     t.string "title"
     t.date "last_promotion"
-    t.decimal "current_compensation"
+    t.string "current_compensation"
     t.boolean "due_for_promotion"
     t.string "review_document"
     t.date "last_1_on_1"

@@ -7,8 +7,8 @@
         <div class="card-body">
           <h4 class="card-title"><%= user.name %></h4>
           <h6 class="card-text"><%= user.title %></h6>
-          <p class="card-text"><%= user.email %></p>
-          <p class="card-text">GitHub: <%= user.github_handle %></p>
+          <p class="card-text"><i class="bi bi-envelope-at"></i> <%= user.email %></p>
+          <p class="card-text"><i class="bi bi-github"></i> <%= user.github_handle %></p>
           <%= link_to "Profile", user_path(user), class: "btn btn-primary me-1" %>
           <%= link_to "Goals", user_goals_path(user, @goal), class: "btn btn-success me-1" %>
         </div>

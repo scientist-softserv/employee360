@@ -1,4 +1,18 @@
 require 'faker'
+require 'action_view'
+
+# Include the NumberHelper module to gain access to number_with_delimiter
+include ActionView::Helpers::NumberHelper
+
+# Helper method to generate a fake income value with commas as thousand separators
+def fake_income
+  # Generate a random number between 1000 and 999999999 (adjust the range as needed)
+  income = Faker::Number.between(from: 1000, to: 999_999_999)
+
+  # Format the number as currency with commas as thousand separators and two decimal places
+  formatted_income = number_with_delimiter(sprintf("%.2f", income.to_f / 100), delimiter: ',')
+  "$" + formatted_income
+end
 
 # Helper method to generate random date within a range
 def random_date(from, to)
@@ -22,7 +36,7 @@ users_data = []
     start_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 1, 1)),
     title: Faker::Job.title,
     last_promotion: random_date(Date.new(2019, 1, 1), Date.new(2023, 1, 1)),
-    current_compensation: rand(60_000..120_000),
+    current_compensation: fake_income,
     due_for_promotion: Faker::Boolean.boolean(true_ratio: 0.5).to_s,
     review_document: random_url,
     last_1_on_1: random_date(Date.new(2022, 1, 1), Date.new(2023, 1, 1)),
@@ -45,7 +59,7 @@ end
     start_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 1, 1)),
     title: Faker::Job.title,
     last_promotion: random_date(Date.new(2019, 1, 1), Date.new(2023, 1, 1)),
-    current_compensation: rand(80_000..150_000),
+    current_compensation: fake_income,
     due_for_promotion: Faker::Boolean.boolean(true_ratio: 0.5).to_s,
     review_document: random_url,
     last_1_on_1: random_date(Date.new(2022, 1, 1), Date.new(2023, 1, 1)),
@@ -62,11 +76,11 @@ users_data << {
   email: 'admin@example.com',
   github_handle: Faker::Internet.user_name(specifier: 5..15),
   password: 'testing123',
-  name: 'Robot Kaufamn',
+  name: 'Administrator Sally',
   start_date: Date.new(2020, 3, 5),
   title: 'Administrator',
   last_promotion: Date.new(2021, 7, 15),
-  current_compensation: 100000,
+  current_compensation: fake_income,
   due_for_promotion: "true",
   review_document: random_url,
   last_1_on_1: Date.new(2022, 6, 30),
@@ -87,7 +101,7 @@ users_data << {
   start_date: Date.new(2021, 1, 15),
   title: 'Software Engineer',
   last_promotion: Date.new(2022, 6, 30),
-  current_compensation: 75000,
+  current_compensation: fake_income,
   due_for_promotion: "false",
   review_document: random_url,
   last_1_on_1: Date.new(2022, 6, 30),
