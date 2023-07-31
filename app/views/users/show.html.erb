@@ -1,23 +1,50 @@
-<div class="container m-1">
-  <h1><%= @user.name %></h1>
-  <h4>Title: <%= @user.title %></h4>
-  <p>Email: <%= @user.email %></p>
-  <p>GitHub: <%= @user.github_handle %></p>
-  <p>Start Date: <%= @user.start_date %></p>
-  <p>Last Promotion: <%= @user.last_promotion %></p>
-  <p>Current Compensation: <%= @user.current_compensation %></p>
-  <p>Review Document:
-  <%= link_to @user.review_document, target: "_blank" do %>
-    Link
-  <% end %>
-  </p>
-  <p>Last 1-on-1: <%= @user.last_1_on_1 %></p>
-  <p>Next 1-on-1: <%= @user.next_1_on_1 %></p>
-
-  <% if current_user.admin? %>
-    <p>Due for Promotion: <%= @user.due_for_promotion %></p>
-  <% end %>
-
+<div class="row align-items-start m-1">
+  <div class="col-sm m-3">
+    <div class="card">
+      <div class="card-body text-center">
+        <h1 class="card-title"><%= @user.name %></h1>
+        <h4 class="card-subtitle mb-2 text-muted"><%= @user.title %></h4>
+        <p class="card-text"><i class="bi bi-envelope-at"></i> <%= @user.email %></p>
+        <p class="card-text"><i class="bi bi-github"></i> <%= @user.github_handle %></p>
+        <p class="card-text">Start Date: <%= @user.start_date %></p>
+        <p>
+          <%= link_to @user.review_document, target: "_blank", class: "btn btn-primary me-1" do %>
+            <i class="bi bi-file-earmark-text"></i> Review Document
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm m-3">
+    <div class="card">
+      <div class="card-body text-center">
+        <h4 class="card-title">Employment Data</h4>
+        <details>
+          <summary>Current Compensation</summary>
+          <p>
+          <i class="bi bi-currency-dollar"></i> <%= @user.current_compensation %>
+          </p>
+        </details>
+        <% if current_user.admin? %>
+          <% if @user.due_for_promotion == 'true' %>
+            <p class="card-text mt-3">Due for Promotion: YES</p>
+          <% else %>
+            <p class="card-text mt-3">Due for Promotion: NO</p>
+          <% end %>
+        <% end %>
+        <p class="card-text">Last Promotion: <%= @user.last_promotion %></p>
+        <p class="card-text">Last 1-on-1: <%= @user.last_1_on_1 %></p>
+        <% if @user.next_1_on_1.blank? %>
+          <p>Schedule next 1-on-1:<br/>
+          <%= link_to "https://doodle.com/bp/robertkaufman/1-on-1-schedule", target: "_blank", class: "btn btn-warning m-1" do %>
+            <i class="bi bi-calendar-event"></i> Rob's Doodle
+          <% end %>
+        <% else %>
+          <p>Next 1-on-1 Scheduled:<br/> <%= @user.next_1_on_1 %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <div class="btn-group" role="group" aria-label="Basic example">
     <%= button_to "Employee360 Portal", root_url, class: "btn btn-primary me-1", method: :get %>
     <% if current_user.admin? %>
