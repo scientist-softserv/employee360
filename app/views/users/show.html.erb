@@ -17,7 +17,11 @@
   </div>
   <%= render 'users/employment_data' %>
   </div>
-  <%= render 'users/employment_history' %>
+
+  <div class="col-sm m-3">
+  <%= render 'users/salary_history' %>
+  </div>
+
   <div class="btn-group" role="group" aria-label="Basic example">
     <%= button_to "Employee360 Portal", root_url, class: "btn btn-primary me-1", method: :get %>
     <% if current_user.admin? %>

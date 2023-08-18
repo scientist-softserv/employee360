@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_31_053834) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_18_041150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_053834) do
     t.datetime "updated_at", null: false
     t.date "due_date"
     t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "salary_histories", force: :cascade do |t|
+    t.string "job_title"
+    t.string "salary"
+    t.date "change_date"
+    t.text "change_reason"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_salary_histories_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,4 +59,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_053834) do
   end
 
   add_foreign_key "goals", "users"
+  add_foreign_key "salary_histories", "users"
 end

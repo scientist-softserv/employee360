@@ -1,0 +1,29 @@
+<div class="col-sm m-3">
+  <div class="card">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Title</th>
+          <th>Salary</th>
+          <th>Change Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.salary_histories.each do |salary_history| %>
+          <tr>
+            <td><%= salary_history.change_date %></td>
+            <td><%= salary_history.job_title %></td>
+            <td>
+              <details>
+                <summary>Salary</summary>
+                <%= salary_history.salary %>
+              </details>
+            </td>
+            <td><%= salary_history.change_reason %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

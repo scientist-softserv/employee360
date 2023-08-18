@@ -4,9 +4,7 @@
       <h4 class="card-title">Employment Data</h4>
       <details>
         <summary>Current Compensation</summary>
-        <p>
-        <i class="bi bi-currency-dollar"></i> <%= @user.current_compensation %>
-        </p>
+        <p><%= @user.current_compensation %></p>
       </details>
       <% if current_user.admin? %>
         <% if @user.due_for_promotion == 'true' %>

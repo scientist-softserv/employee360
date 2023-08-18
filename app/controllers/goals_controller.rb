@@ -1,4 +1,3 @@
-# app/controllers/goals_controller.rb
 class GoalsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
@@ -60,7 +59,7 @@ class GoalsController < ApplicationController
 
   def authorize_user
     unless @user == current_user || current_user.admin?
-      flash[:alert] = "You are not authorized to access this goal."
+      flash[:alert] = "You are not ßauthorized to access this goal."
       redirect_to root_path
     end
   end
