@@ -34,7 +34,7 @@ services:
     entrypoint: ["sh", "-c"]
     command:
       - >
-        rails db:create && rails db:migrate && rails db:seed
+        rails db:create && rails db:migrate && rails db:seed && rails salary_histories:update_current_salary
     depends_on:
       db:
         condition: service_started
