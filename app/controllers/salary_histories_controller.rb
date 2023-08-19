@@ -5,7 +5,7 @@ class SalaryHistoriesController < ApplicationController
   before_action :set_salary_history, only: [:show, :edit, :update, :destroy]
 
   def index
-    @salary_histories = @user.salary_histories
+    @salary_histories = @user.salary_histories.order(change_date: :desc)
   end
 
   def show

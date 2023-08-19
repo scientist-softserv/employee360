@@ -1,7 +1,7 @@
 <div class="col-sm m-3">
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">Employment Data</h4>
+      <h4 class="card-title">Salary History</h4>
       <table class="table">
         <thead>
           <tr>
@@ -13,7 +13,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @user.salary_histories.each do |salary_history| %>
+          <% @user.salary_histories.order(change_date: :desc).each do |salary_history| %>
             <tr>
               <td><%= salary_history.change_date %></td>
               <td><%= salary_history.job_title %></td>

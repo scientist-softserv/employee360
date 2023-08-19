@@ -2,40 +2,27 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Employment Data</h4>
-      <table class="table">
-        <thead>
-          <h6 class="card-title">Current Salary</h6>
-          <tr>
-            <th>Date</th>
-            <th>Title</th>
-            <th>Salary</th>
-            <th>Change Reason</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if @user.salary_histories.any? { |sh| sh.current_salary } %>
-            <% @user.salary_histories.each do |salary_history| %>
-              <% if salary_history.current_salary %>
-                <tr>
-                  <td><%= salary_history.change_date %></td>
-                  <td><%= salary_history.job_title %></td>
-                  <td>
-                    <details>
-                      <summary>Salary</summary>
-                      <%= salary_history.salary %>
-                    </details>
-                  </td>
-                  <td><%= salary_history.change_reason %></td>
-                </tr>
-              <% end %>
-            <% end %>
-          <% else %>
+      <div>
+        <table class="table">
+          <thead>
             <tr>
-              <td colspan="4">No current salary history available.</td>
+              <th>Start Date</th>
+              <th>Last Promotion</th>
+              <th>Due for Promotion</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @user.start_date %></td>
+              <td><%= @user.last_promotion %></td>
+              <td><%= @user.due_for_promotion %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <%= render 'users/current_salary' %>
+      </div>
     </div>
   </div>
 </div>
