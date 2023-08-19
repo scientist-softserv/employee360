@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :goals
+    resources :salary_histories
   end
 
   root 'pages#home'

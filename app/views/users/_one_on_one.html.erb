@@ -1,0 +1,23 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Last 1:1</th>
+        <th>Next 1:1</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @user.last_1_on_1 %></td>
+
+        <% if @user.next_1_on_1.blank? %>
+          <td><%= link_to "https://doodle.com/bp/robertkaufman/1-on-1-schedule", target: "_blank", class: "btn btn-warning m-1" do %>
+            <i class="bi bi-calendar-event"></i> Rob's Doodle</td>
+          <% end %>
+        <% else %>
+          <td><%= @user.next_1_on_1 %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

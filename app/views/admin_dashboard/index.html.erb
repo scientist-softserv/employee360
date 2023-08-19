@@ -11,6 +11,7 @@
           <p class="card-text"><i class="bi bi-github"></i> <%= user.github_handle %></p>
           <%= link_to "Profile", user_path(user), class: "btn btn-primary me-1" %>
           <%= link_to "Goals", user_goals_path(user, @goal), class: "btn btn-success me-1" %>
+          <%= link_to "Salary History", user_salary_histories_path(user, @salary_history), class: "btn btn-warning me-1" %>
         </div>
       </div>
     </div>

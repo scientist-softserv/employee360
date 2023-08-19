@@ -1,0 +1,40 @@
+<%= form_with(model: [@user, @salary_history]) do |form| %>
+  <% if @salary_history.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@salary_history.errors.count, "error") %> prohibited this salary_history from being saved:</h2>
+
+      <ul>
+        <% @salary_history.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group m-1">
+    <%= form.label :job_title %>
+    <%= form.text_field :job_title, class: "form-control" %>
+  </div>
+
+  <div class="form-group m-1">
+    <%= form.label :salary %>
+    <%= form.text_field :salary, class: "form-control" %>
+  </div>
+
+  <div class="form-group m-1">
+    <%= form.label :change_date %>
+    <%= form.date_field :change_date %>
+  </div>
+
+  <div class="form-group m-1">
+    <%= form.label :change_reason %>
+    <%= form.text_field :change_reason, class: "form-control", rows: 3 %>
+  </div>
+
+  <div class="form-group m-1">
+    <%= form.label :current_salary %>
+    <%= form.check_box :current_salary %>
+  </div>
+
+  <%= form.submit 'Save', class: 'btn btn-primary' %>
+<% end %>
