@@ -28,6 +28,13 @@
 
   <div class="form-group m-1">
     <%= form.label :change_reason %>
-    <%= form.text_area :change_reason, class: "form-control", rows: 3 %>
+    <%= form.text_field :change_reason, class: "form-control", rows: 3 %>
   </div>
+
+  <div class="form-group m-1">
+    <%= form.label :current_salary %>
+    <%= form.check_box :current_salary %>
+  </div>
+
+  <%= form.submit 'Save', class: 'btn btn-primary' %>
 <% end %>

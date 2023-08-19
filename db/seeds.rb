@@ -51,19 +51,19 @@ users_data = []
         job_title: Faker::Job.title,
         salary: fake_income,
         change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-        change_reason: Faker::Lorem.sentence
+        change_reason: "annual-increase"
       },
       {
         job_title: Faker::Job.title,
         salary: fake_income,
         change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-        change_reason: Faker::Lorem.sentence
+        change_reason: "promotion"
       },
       {
         job_title: Faker::Job.title,
         salary: fake_income,
         change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-        change_reason: Faker::Lorem.sentence
+        change_reason: "start"
       }
     ]
   }
@@ -94,19 +94,19 @@ end
         job_title: Faker::Job.title,
         salary: fake_income,
         change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-        change_reason: Faker::Lorem.sentence
+        change_reason: "annual-increase"
       },
       {
         job_title: Faker::Job.title,
         salary: fake_income,
         change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-        change_reason: Faker::Lorem.sentence
+        change_reason: "promotion"
       },
       {
         job_title: Faker::Job.title,
         salary: fake_income,
         change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-        change_reason: Faker::Lorem.sentence
+        change_reason: "start"
       }
     ]
   }
@@ -135,19 +135,19 @@ users_data << {
       job_title: Faker::Job.title,
       salary: fake_income,
       change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-      change_reason: Faker::Lorem.sentence
+      change_reason: "annual-increase"
     },
     {
       job_title: Faker::Job.title,
       salary: fake_income,
       change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-      change_reason: Faker::Lorem.sentence
+      change_reason: "promotion"
     },
     {
       job_title: Faker::Job.title,
       salary: fake_income,
       change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-      change_reason: Faker::Lorem.sentence
+      change_reason: "start"
     }
   ]
 }
@@ -175,19 +175,19 @@ users_data << {
       job_title: Faker::Job.title,
       salary: fake_income,
       change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-      change_reason: Faker::Lorem.sentence
+      change_reason: "annual-increase"
     },
     {
       job_title: Faker::Job.title,
       salary: fake_income,
       change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-      change_reason: Faker::Lorem.sentence
+      change_reason: "promotion"
     },
     {
       job_title: Faker::Job.title,
       salary: fake_income,
       change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-      change_reason: Faker::Lorem.sentence
+      change_reason: "start"
     }
   ]
 }

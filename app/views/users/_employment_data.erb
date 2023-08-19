@@ -1,28 +1,41 @@
 <div class="col-sm m-3">
   <div class="card">
-    <div class="card-body text-center">
+    <div class="card-body">
       <h4 class="card-title">Employment Data</h4>
-      <details>
-        <summary>Current Compensation</summary>
-        <p><%= @user.current_compensation %></p>
-      </details>
-      <% if current_user.admin? %>
-        <% if @user.due_for_promotion == 'true' %>
-          <p class="card-text mt-3">Due for Promotion: YES</p>
-        <% else %>
-          <p class="card-text mt-3">Due for Promotion: NO</p>
-        <% end %>
-      <% end %>
-      <p class="card-text">Last Promotion: <%= @user.last_promotion %></p>
-      <p class="card-text">Last 1-on-1: <%= @user.last_1_on_1 %></p>
-      <% if @user.next_1_on_1.blank? %>
-        <p>Schedule 1-on-1:<br/>
-        <%= link_to "https://doodle.com/bp/robertkaufman/1-on-1-schedule", target: "_blank", class: "btn btn-warning m-1" do %>
-          <i class="bi bi-calendar-event"></i> Rob's Doodle
-        <% end %>
-      <% else %>
-        <p>Next 1-on-1: <%= @user.next_1_on_1 %></p>
-      <% end %>
+      <table class="table">
+        <thead>
+          <h6 class="card-title">Current Salary</h6>
+          <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Salary</th>
+            <th>Change Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @user.salary_histories.any? { |sh| sh.current_salary } %>
+            <% @user.salary_histories.each do |salary_history| %>
+              <% if salary_history.current_salary %>
+                <tr>
+                  <td><%= salary_history.change_date %></td>
+                  <td><%= salary_history.job_title %></td>
+                  <td>
+                    <details>
+                      <summary>Salary</summary>
+                      <%= salary_history.salary %>
+                    </details>
+                  </td>
+                  <td><%= salary_history.change_reason %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="4">No current salary history available.</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

@@ -19,19 +19,29 @@ class SalaryHistoriesController < ApplicationController
   def create
     @salary_history = @user.salary_histories.build(salary_history_params)
 
+    if @salary_history.current_salary
+      # Update user's other salary histories to set current_salary to false
+      @user.salary_histories.where.not(id: @salary_history.id).update_all(current_salary: false)
+    end
+
     if @salary_history.save
-      redirect_to user_salary_histories_path(@user, @salary_history), notice: 'Salary History was successfully created.'
+      redirect_to user_salary_histories_path(@user), notice: 'Salary History was successfully created.'
     else
       render :new
     end
   end
 
   def edit
-    # This will automatically render the 'edit.html.erb' template
+    @salary_history = @user.salary_histories.find(params[:id])
   end
 
   def update
     if @salary_history.update(salary_history_params)
+      if @salary_history.current_salary
+        # Update user's other salary histories to set current_salary to false
+        @user.salary_histories.where.not(id: @salary_history.id).update_all(current_salary: false)
+      end
+
       redirect_to user_salary_history_path(@user, @salary_history), notice: 'Salary History was successfully updated.'
     else
       render :edit
@@ -54,7 +64,7 @@ class SalaryHistoriesController < ApplicationController
   end
 
   def salary_history_params
-    params.require(:salary_history).permit(:job_title, :salary, :change_date, :change_reason)
+    params.require(:salary_history).permit(:job_title, :salary, :change_date, :change_reason, :current_salary)
   end
 
   def authorize_user
@@ -64,7 +74,3 @@ class SalaryHistoriesController < ApplicationController
     end
   end
 end
-
-
-
-

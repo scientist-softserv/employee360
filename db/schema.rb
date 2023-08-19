@@ -28,7 +28,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_18_041150) do
     t.string "job_title"
     t.string "salary"
     t.date "change_date"
-    t.text "change_reason"
+    t.string "change_reason"
+    t.boolean "current_salary"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -4,7 +4,8 @@ class CreateSalaryHistories < ActiveRecord::Migration[7.0]
       t.string :job_title
       t.string :salary
       t.date :change_date
-      t.text :change_reason
+      t.string :change_reason
+      t.boolean :current_salary
       t.references :user, null: false, foreign_key: true
 
       t.timestamps
