@@ -1,8 +1,20 @@
 require 'faker'
 require 'action_view'
+require 'yaml'
 
 # Include the NumberHelper module to gain access to number_with_delimiter
 include ActionView::Helpers::NumberHelper
+
+# Load salary config data from YAML file
+salary_config = YAML.load(File.read('config/salary_config.yml'))
+job_titles = salary_config['job_titles']
+salary_ranges = salary_config['salary']
+change_reasons = salary_config['change_reasons']
+
+# Load change reasons from YAML file
+change_reasons = salary_config['change_reasons']
+# Exclude "New Hire" since set manually below
+change_reasons.delete("New Hire")
 
 # Helper method to generate a fake income value with commas as thousand separators
 def fake_income
@@ -17,6 +29,15 @@ end
 # Helper method to generate random date within a range
 def random_date(from, to)
   rand(from..to)
+end
+
+# Helper method to generate a random salary based on the loaded salary ranges
+def random_salary(salary_ranges)
+  salary_range = salary_ranges.sample
+  min_salary, max_salary = salary_range.split(' - ').map(&:to_i)
+  income = Faker::Number.between(from: min_salary, to: max_salary)
+  formatted_income = number_with_delimiter(sprintf("%.2f", income.to_f / 100), delimiter: ',')
+  "$" + formatted_income
 end
 
 # Helper method to generate a random internet URL link
@@ -34,9 +55,9 @@ users_data = []
     password: 'testing123',
     name: Faker::Name.name,
     start_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 1, 1)),
-    title: Faker::Job.title,
+    title: job_titles.sample,
     last_promotion: random_date(Date.new(2019, 1, 1), Date.new(2023, 1, 1)),
-    current_compensation: fake_income,
+    current_compensation: random_salary(salary_ranges),
     due_for_promotion: Faker::Boolean.boolean(true_ratio: 0.5).to_s,
     review_document: random_url,
     last_1_on_1: random_date(Date.new(2022, 1, 1), Date.new(2023, 1, 1)),
@@ -48,22 +69,28 @@ users_data = []
     ],
     salary_histories_attributes: [
       {
-        job_title: Faker::Job.title,
-        salary: fake_income,
+        job_title: job_titles.sample,
+        salary: random_salary(salary_ranges),
         change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-        change_reason: "annual-increase"
+        change_reason: change_reasons.sample
       },
       {
-        job_title: Faker::Job.title,
-        salary: fake_income,
+        job_title: job_titles.sample,
+        salary: random_salary(salary_ranges),
         change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-        change_reason: "promotion"
+        change_reason: change_reasons.sample
       },
       {
-        job_title: Faker::Job.title,
-        salary: fake_income,
+        job_title: job_titles.sample,
+        salary: random_salary(salary_ranges),
         change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-        change_reason: "start"
+        change_reason: change_reasons.sample
+      },
+      {
+        job_title: job_titles.sample,
+        salary: random_salary(salary_ranges),
+        change_date: random_date(Date.new(2014, 1, 1), Date.new(2014, 12, 31)),
+        change_reason: "New Hire"
       }
     ]
   }
@@ -77,9 +104,9 @@ end
     password: 'testing123',
     name: Faker::Name.name,
     start_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 1, 1)),
-    title: Faker::Job.title,
+    title: job_titles.sample,
     last_promotion: random_date(Date.new(2019, 1, 1), Date.new(2023, 1, 1)),
-    current_compensation: fake_income,
+    current_compensation: random_salary(salary_ranges),
     due_for_promotion: Faker::Boolean.boolean(true_ratio: 0.5).to_s,
     review_document: random_url,
     last_1_on_1: random_date(Date.new(2022, 1, 1), Date.new(2023, 1, 1)),
@@ -91,22 +118,28 @@ end
     ],
     salary_histories_attributes: [
       {
-        job_title: Faker::Job.title,
-        salary: fake_income,
+        job_title: job_titles.sample,
+        salary: random_salary(salary_ranges),
         change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-        change_reason: "annual-increase"
+        change_reason: change_reasons.sample
       },
       {
-        job_title: Faker::Job.title,
-        salary: fake_income,
+        job_title: job_titles.sample,
+        salary: random_salary(salary_ranges),
         change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-        change_reason: "promotion"
+        change_reason: change_reasons.sample
       },
       {
-        job_title: Faker::Job.title,
-        salary: fake_income,
+        job_title: job_titles.sample,
+        salary: random_salary(salary_ranges),
         change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-        change_reason: "start"
+        change_reason: change_reasons.sample
+      },
+      {
+        job_title: job_titles.sample,
+        salary: random_salary(salary_ranges),
+        change_date: random_date(Date.new(2014, 1, 1), Date.new(2014, 12, 31)),
+        change_reason: "New Hire"
       }
     ]
   }
@@ -120,7 +153,7 @@ users_data << {
   start_date: Date.new(2020, 3, 5),
   title: 'Administrator',
   last_promotion: Date.new(2021, 7, 15),
-  current_compensation: fake_income,
+  current_compensation: random_salary(salary_ranges),
   due_for_promotion: "true",
   review_document: random_url,
   last_1_on_1: Date.new(2022, 6, 30),
@@ -132,22 +165,28 @@ users_data << {
   ],
   salary_histories_attributes: [
     {
-      job_title: Faker::Job.title,
-      salary: fake_income,
+      job_title: job_titles.sample,
+      salary: random_salary(salary_ranges),
       change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-      change_reason: "annual-increase"
+      change_reason: change_reasons.sample
     },
     {
-      job_title: Faker::Job.title,
-      salary: fake_income,
+      job_title: job_titles.sample,
+      salary: random_salary(salary_ranges),
       change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-      change_reason: "promotion"
+      change_reason: change_reasons.sample
     },
     {
-      job_title: Faker::Job.title,
-      salary: fake_income,
+      job_title: job_titles.sample,
+      salary: random_salary(salary_ranges),
       change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-      change_reason: "start"
+      change_reason: change_reasons.sample
+    },
+    {
+      job_title: job_titles.sample,
+      salary: random_salary(salary_ranges),
+      change_date: random_date(Date.new(2014, 1, 1), Date.new(2014, 12, 31)),
+      change_reason: "New Hire"
     }
   ]
 }
@@ -172,22 +211,28 @@ users_data << {
   ],
   salary_histories_attributes: [
     {
-      job_title: Faker::Job.title,
-      salary: fake_income,
+      job_title: job_titles.sample,
+      salary: random_salary(salary_ranges),
       change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-      change_reason: "annual-increase"
+      change_reason: change_reasons.sample
     },
     {
-      job_title: Faker::Job.title,
-      salary: fake_income,
+      job_title: job_titles.sample,
+      salary: random_salary(salary_ranges),
       change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-      change_reason: "promotion"
+      change_reason: change_reasons.sample
     },
     {
-      job_title: Faker::Job.title,
-      salary: fake_income,
+      job_title: job_titles.sample,
+      salary: random_salary(salary_ranges),
       change_date: random_date(Date.new(2015, 1, 1), Date.new(2023, 8, 17)),
-      change_reason: "start"
+      change_reason: change_reasons.sample
+    },
+    {
+      job_title: job_titles.sample,
+      salary: random_salary(salary_ranges),
+      change_date: random_date(Date.new(2014, 1, 1), Date.new(2014, 12, 31)),
+      change_reason: "New Hire"
     }
   ]
 }

@@ -64,7 +64,7 @@ class SalaryHistoriesController < ApplicationController
   end
 
   def salary_history_params
-    params.require(:salary_history).permit(:job_title, :salary, :change_date, :change_reason, :current_salary)
+    params.require(:salary_history).permit(:job_title, :salary, :change_date, :change_reason, :current_salary, :user_id)
   end
 
   def authorize_user

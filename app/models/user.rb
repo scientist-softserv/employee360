@@ -16,8 +16,8 @@ class User < ApplicationRecord
   end
 
   def start_date
-    # Find the earliest salary history record with 'start' change_reason
-    salary_history = salary_histories.find_by(change_reason: 'start')
+    # Find the earliest salary history record with 'New Hire' change_reason
+    salary_history = salary_histories.find_by(change_reason: 'New Hire')
     salary_history&.change_date
   end
 
@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
   def last_promotion
     # Find the most recent promotion date from salary history records
-    salary_history = salary_histories.where(change_reason: 'promotion').order(change_date: :desc).first
+    salary_history = salary_histories.where(change_reason: 'Promotion').order(change_date: :desc).first
     salary_history&.change_date
   end
 

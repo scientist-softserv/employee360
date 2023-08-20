@@ -1,0 +1,30 @@
+job_titles:
+  - Apprentice
+  - Junior I
+  - Junior II
+  - Mid I
+  - Mid II
+  - Senior I
+  - Senior II
+  - Lead I
+  - Lead II
+  - Client Liason
+  - Junior Project Manager
+  - Project Manager I
+  - Project Manager II
+
+salary:
+  - 45000 - 54999
+  - 55000 - 64999
+  - 65000 - 74999
+  - 75000 - 89999
+  - 90000 - 104999
+  - 105000 - 119000
+  - 120000 - 134999
+  - 135000 - 164999
+  - 165000 - +
+
+change_reasons:
+  - Promotion
+  - Annual Increase
+  - New Hire

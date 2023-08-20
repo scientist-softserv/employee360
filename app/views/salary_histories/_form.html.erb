@@ -13,7 +13,7 @@
 
   <div class="form-group m-1">
     <%= form.label :job_title %>
-    <%= form.text_field :job_title, class: "form-control" %>
+    <%= form.select :job_title, SalaryConfig.job_titles %>
   </div>
 
   <div class="form-group m-1">
@@ -28,7 +28,7 @@
 
   <div class="form-group m-1">
     <%= form.label :change_reason %>
-    <%= form.text_field :change_reason, class: "form-control", rows: 3 %>
+    <%= form.select :change_reason, SalaryConfig.change_reasons %>
   </div>
 
   <div class="form-group m-1">
