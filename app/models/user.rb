@@ -30,7 +30,12 @@ class User < ApplicationRecord
   def last_promotion
     # Find the most recent promotion date from salary history records
     salary_history = salary_histories.where(change_reason: 'Promotion').order(change_date: :desc).first
-    salary_history&.change_date
+
+    if salary_history
+      salary_history.change_date
+    else
+      "Not Applicable"
+    end
   end
 
   def current_compensation
