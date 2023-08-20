@@ -3,6 +3,7 @@ class SalaryHistoriesController < ApplicationController
   before_action :set_user
   before_action :authorize_user
   before_action :set_salary_history, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_admin, only: [:index, :new, :create, :edit, :update, :destroy]
 
   def index
     @salary_histories = @user.salary_histories.order(change_date: :desc)
@@ -32,10 +33,22 @@ class SalaryHistoriesController < ApplicationController
   end
 
   def edit
+    unless current_user.admin?
+      flash[:alert] = "Only administrators can edit salary histories."
+      redirect_to root_path
+      return
+    end
+
     @salary_history = @user.salary_histories.find(params[:id])
   end
 
   def update
+    unless current_user.admin?
+      flash[:alert] = "Only administrators can update salary histories."
+      redirect_to root_path
+      return
+    end
+
     if @salary_history.update(salary_history_params)
       if @salary_history.current_salary
         # Update user's other salary histories to set current_salary to false
@@ -70,6 +83,13 @@ class SalaryHistoriesController < ApplicationController
   def authorize_user
     unless @user == current_user || current_user.admin?
       flash[:alert] = "You are not authorized to access this Salary History."
+      redirect_to root_path
+    end
+  end
+
+  def authorize_admin
+    unless current_user.admin?
+      flash[:alert] = "Only administrators can access this page."
       redirect_to root_path
     end
   end
