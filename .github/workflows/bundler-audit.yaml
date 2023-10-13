@@ -11,6 +11,7 @@ on:
 
 jobs:
   bundler-audit:
-    uses: scientist-softserv/actions/.github/workflows/lint.yaml@test-bundler-audit
+    uses: scientist-softserv/actions/.github/workflows/bundler-audit.yaml@test-bundler-audit
     with:
       webTarget: web
+      tag: 0559fa96
