@@ -1,5 +1,5 @@
-name: 'Build Test Lint'
-run-name: Build Test Lint of ${{ github.ref_name }} by @${{ github.actor }}
+name: 'Bundler Audit'
+run-name: Bundler Audit of ${{ github.ref_name }} by @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
