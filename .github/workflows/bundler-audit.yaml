@@ -27,7 +27,7 @@ jobs:
         bundle exec bundle-audit check --update
 
     - name: Upload report
-      if: failure()
+      if: always()
       uses: actions/upload-artifact@v2
       with:
         name: bundler-audit-report
