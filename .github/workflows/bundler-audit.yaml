@@ -1,34 +1,16 @@
-name: "Bundler Audit"
-run-name: Bundler Audit (${{ github.ref_name }} -> ${{ inputs.environment }}) by @${{ github.actor }}
-on: [push]
+name: 'Build Test Lint'
+run-name: Build Test Lint of ${{ github.ref_name }} by @${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        required: false
+        default: false
 
 jobs:
-  audit:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.1.3
-
-    - name: Install dependencies
-      run: |
-        gem install bundler
-        bundle config path vendor/bundle
-        bundle install --jobs 4 --retry 3
-
-    - name: Run bundler-audit
-      run: |
-        gem install bundler-audit
-        bundle exec bundle audit check --update
-
-    - name: Upload report
-      if: always()
-      uses: actions/upload-artifact@v2
-      with:
-        name: bundler-audit-report
-        path: report*.txt
+  bundler-audit:
+    uses: scientist-softserv/actions/.github/workflows/lint.yaml@test-bundler-audit
+    with:
+      webTarget: web
