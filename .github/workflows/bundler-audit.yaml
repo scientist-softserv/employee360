@@ -14,4 +14,4 @@ jobs:
     uses: scientist-softserv/actions/.github/workflows/bundler-audit.yaml@test-bundler-audit
     with:
       webTarget: web
-      tag: 0559fa96
+      tag: latest
