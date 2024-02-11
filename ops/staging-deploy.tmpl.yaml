@@ -92,11 +92,6 @@ volumes:
     persistentVolumeClaim:
       claimName: employee360-staging-shared-pvc
 
-# Additional volumeMounts on the output Deployment definition.
-# volumeMounts: []
-# # - name: foo
-# #   mountPath: "/etc/foo"
-# #   readOnly: true
 volumeMounts:
   - name: shared-storage
     mountPath: /app/shared
