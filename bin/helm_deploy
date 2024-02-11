@@ -17,8 +17,8 @@ helm upgrade \
     --install \
     --atomic \
     --timeout 15m0s \
-    --set rails.image.repository="$DEPLOY_IMAGE" \
-    --set rails.image.tag="$DEPLOY_TAG" \
+    --set image.repository="$DEPLOY_IMAGE" \
+    --set image.tag="$DEPLOY_TAG" \
     $HELM_EXTRA_ARGS \
     $DRY_RUN_DEBUG \
     --namespace="$namespace" \
