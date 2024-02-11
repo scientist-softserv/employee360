@@ -9,6 +9,7 @@ x-app: &app
     - .env
   volumes:
     - .:/app
+    - shared:/app/shared
 
 services:
   web:
@@ -36,10 +37,11 @@ services:
     entrypoint: ["sh", "-c"]
     command:
       - >
-        rails db:create && rails db:migrate && rails db:seed && rails salary_histories:update_current_salary
+        rails db:create && rails db:migrate && rails db:seed
     depends_on:
       db:
         condition: service_started
 
 volumes:
   pg_data:
+  shared:
