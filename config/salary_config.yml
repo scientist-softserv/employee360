@@ -1,18 +1,50 @@
 job_titles:
-  - Apprentice
-  - Junior I
-  - Junior II
-  - Mid I
-  - Mid II
-  - Senior I
-  - Senior II
-  - Lead I
-  - Lead II
-  - Client Liason
-  - Junior Project Manager
-  - Project Manager I
+  - Associate Director
+  - Associate Director of Customer Success
+  - Associate Director of Reagents & Consumables
+  - Business Development Intern
+  - CEO
+  - Chief Customer Officer
+  - Chief Technology Officer
+  - Client Liaison III
+  - Customer Success Manager
+  - Director of Customer Success
+  - Director of Information Technology
+  - Director of Marketing
+  - Engineering Manager
+  - ESTEEM CAPSTONE Intern
+  - IT Specialist
+  - Junior Developer II
+  - LEARN Intern
+  - Manager of Business Development
+  - Mid Level Software Developer
+  - Midlevel Developer I
+  - Midlevel Developer II
+  - President & Chief Operating Officer
+  - Professional Services Associate
+  - Professional Services Manager
   - Project Manager II
-  - VP of Software Services
+  - Project Manager III
+  - Senior Client Relationship Manager
+  - Senior Customer Success Manager
+  - Senior Developer I
+  - Senior Developer II
+  - Senior Director of Business Development
+  - Senior Director Research Concierge
+  - Senior Lead Software Engineer
+  - Senior Manager of Business Development
+  - Senior Manager of Content
+  - Senior Product Data Manager
+  - Senior Vice President of Business Development
+  - Senior Vice President of Compliance
+  - Senior Vice President of Engineering
+  - Senior Vice Presidents of Enterprise
+  - Software Developer
+  - Vice President
+  - Vice President of Applications
+  - Vice President of Reagents & Consumables
+  - Vice President of Supplier Relations
+
 
 salary:
   - 45000 - 54999
@@ -29,3 +61,4 @@ change_reasons:
   - Promotion
   - Annual Increase
   - New Hire
+

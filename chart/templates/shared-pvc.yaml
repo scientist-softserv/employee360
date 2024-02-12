@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.nameOverride }}-shared-pvc
+  labels:
+    app: {{ template "chart.name" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: {{ .Values.sharedVolume.storage.size }}
+  storageClassName: {{ .Values.sharedVolume.className }}
