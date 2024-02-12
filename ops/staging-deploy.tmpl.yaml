@@ -118,3 +118,5 @@ env:
     DB_PORT: 5432
     DB_USER: postgres
     NAME: employee360
+    SECRET_KEY_BASE: $SECRET_KEY_BASE
+    HOST_URL: employee360-staging.notch8.cloud
