@@ -120,3 +120,4 @@ env:
     NAME: employee360
     SECRET_KEY_BASE: $SECRET_KEY_BASE
     HOST_URL: employee360-staging.notch8.cloud
+    RAILS_ENV: production
