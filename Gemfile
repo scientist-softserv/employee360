@@ -5,8 +5,10 @@ ruby '3.1.3'
 
 gem 'rails', '~> 7.0.6'
 
+gem 'activeadmin'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.2'
+gem 'cancancan'
 gem 'capybara', group: [:test]
 gem 'debug', platforms: %i[ mri mingw x64_mingw ], group: [:development, :test]
 gem 'devise', '~> 4.9'

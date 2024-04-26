@@ -1,8 +1,7 @@
 class GoalsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
-  before_action :authorize_user
-  before_action :set_goal, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     @goals = @user.goals
@@ -49,18 +48,7 @@ class GoalsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-  def set_goal
-    @goal = @user.goals.find(params[:id])
-  end
-
   def goal_params
     params.require(:goal).permit(:title, :description, :due_date)
-  end
-
-  def authorize_user
-    unless @user == current_user || current_user.admin?
-      flash[:alert] = "You are not ßauthorized to access this goal."
-      redirect_to root_path
-    end
   end
 end

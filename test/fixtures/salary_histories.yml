@@ -5,9 +5,10 @@ one:
   salary: MyString
   change_date: 2023-08-17
   change_reason: MyString
-
+  user_id: 1
 two:
   job_title: MyString
   salary: MyString
   change_date: 2023-08-17
   change_reason: MyString
+  user_id: 1
