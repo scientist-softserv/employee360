@@ -15,12 +15,13 @@ services:
   web:
     <<: *app
     ports:
-      - "3000:3000"
+      - "3001:3000"
     depends_on:
       - db
     environment:
       - DATABASE_URL=${DB_ADAPTER}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
-
+      - VIRTUAL_PORT=3000
+      - VIRTUAL_HOST=employee360.test
   db:
     image: postgres:13.3
     environment:
