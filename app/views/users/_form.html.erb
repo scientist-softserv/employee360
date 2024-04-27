@@ -22,8 +22,8 @@
       </div>
       <div class="col">
         <div class="form-group">
-          <%= form.label :title %>
-          <%= form.text_field :title, class: "form-control", disabled: true  %>
+          <%= form.label :title, 'Current Title' %>
+          <%= form.text_field :title, value: @user_title, class: "form-control", disabled: true %>
         </div>
       </div>
     </div>
@@ -31,7 +31,11 @@
       <div class="col">
         <div class="form-group">
           <%= form.label :last_promotion %>
-          <%= form.date_field :last_promotion, class: "form-control", disabled: true  %>
+          <% if @user.last_promotion %>
+            <%= form.date_field :last_promotion, value: @user.last_promotion.strftime("%Y-%m-%d"), class: "form-control", disabled: true %>
+          <% else %>
+            <%= form.text_field :last_promotion, value: 'Not Applicable', class: "form-control", disabled: true, readonly: true %>
+          <% end %>
         </div>
       </div>
       <div class="col">
@@ -42,12 +46,6 @@
       </div>
     </div>
     <div class="row">
-      <div class="col my-auto">
-        <div class="form-check">
-          <%= form.check_box :due_for_promotion, class: "form-check-input", id: "gridCheck" %>
-          <%= form.label :due_for_promotion, "Due for Promotion?", class: "form-check-label" %>
-        </div>
-      </div>
       <div class="col">
         <div class="form-group">
           <%= form.label :github_handle %>

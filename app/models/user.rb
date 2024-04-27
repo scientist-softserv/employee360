@@ -34,7 +34,7 @@ class User < ApplicationRecord
     if salary_history
       salary_history.change_date
     else
-      "Not Applicable"
+      nil  # Return nil instead of "Not Applicable"
     end
   end
 
