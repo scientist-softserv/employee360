@@ -4,7 +4,6 @@ git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 ruby '3.1.3'
 
 gem 'rails', '~> 7.0.8.1'
-
 gem "actionpack", ">= 7.0.8.1"
 gem "activestorage", ">= 7.0.8.1"
 gem 'bootsnap', require: false
