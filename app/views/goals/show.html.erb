@@ -4,7 +4,7 @@
 <p><strong>Due Date:</strong> <%= @goal.due_date %></p>
 
 <div class="btn-group" role="group" aria-label="Basic example">
-  <%= button_to "Edit", edit_user_goal_path(@user, @goal), class: "btn btn-secondary me-1", method: :get %>
-  <%= button_to "Delete", user_goal_path(@user, @goal), class: "btn btn-danger me-1", method: :delete, data: { confirm: "Are you sure?" } %>
-  <%= button_to "Back to Goals", user_goals_path(@user, @goal), class: "btn btn-success me-1", method: :get %>
+  <%= button_to "Edit", edit_user_goal_path(@user, @goal), class: "btn btn-secondary", method: :get %>
+  <%= button_to "Delete", user_goal_path(@user, @goal), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+  <%= button_to "Back to Goals", user_goals_path(@user, @goal), class: "btn btn-success", method: :get %>
 </div>

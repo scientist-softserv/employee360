@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :goals
   has_many :salary_histories
 
-  enum role: { employee: 0, superadmin: 1 }
+  enum role: { employee: 0, superadmin: 1, admin: 2 }
 
   after_initialize :set_default_role, :if => :new_record?
 

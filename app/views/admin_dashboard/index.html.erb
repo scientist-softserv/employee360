@@ -20,9 +20,9 @@
             <td><i class="bi bi-envelope-at"></i> <%= user.email %></td>
             <td><i class="bi bi-github"></i> <%= user.github_handle %></td>
             <td>
-              <%= link_to "Profile", user_path(user), class: "btn btn-primary me-1" %>
-              <%= link_to "Goals", user_goals_path(user), class: "btn btn-success me-1" %>
-              <%= link_to "Salary History", user_salary_histories_path(user), class: "btn btn-warning me-1" %>
+              <%= link_to "Profile", user_path(user), class: "btn btn-primary" %>
+              <%= link_to "Goals", user_goals_path(user), class: "btn btn-success" %>
+              <%= link_to "Salary History", user_salary_histories_path(user), class: "btn btn-warning" %>
             </td>
           </tr>
         <% end %>
@@ -32,5 +32,5 @@
 </div>
 
 <div class="btn-group" role="group" aria-label="Basic example">
-  <%= button_to "Employee360 Portal", root_url, class: "btn btn-secondary me-1", method: :get %>
+  <%= button_to "Employee360 Portal", root_url, class: "btn btn-secondary", method: :get %>
 </div>
