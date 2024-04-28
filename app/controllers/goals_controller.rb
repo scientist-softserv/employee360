@@ -58,8 +58,8 @@ class GoalsController < ApplicationController
   end
 
   def authorize_user
-    unless @user == current_user || current_user.superadmin?
-      flash[:alert] = "You are not ßauthorized to access this goal."
+    unless @user == current_user || current_user.superadmin? || current_user.admin?
+      flash[:alert] = "You are not authorized to access this goal."
       redirect_to root_path
     end
   end

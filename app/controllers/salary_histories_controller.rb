@@ -34,7 +34,7 @@ class SalaryHistoriesController < ApplicationController
 
   def edit
     unless current_user.superadmin?
-      flash[:alert] = "Only administrators can edit salary histories."
+      flash[:alert] = "Only super administrators can edit salary histories."
       redirect_to root_path
       return
     end
