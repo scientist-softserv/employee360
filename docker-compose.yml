@@ -38,7 +38,7 @@ services:
     entrypoint: ["sh", "-c"]
     command:
       - >
-        rails db:create && rails db:migrate
+        rails db:create && rails db:migrate && rails db:seed
     depends_on:
       db:
         condition: service_started
