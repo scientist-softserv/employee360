@@ -1,4 +1,5 @@
 class AdminDashboardController < ApplicationController
+  before_action :require_admin
   before_action :require_superadmin
 
   def index
@@ -7,6 +8,12 @@ class AdminDashboardController < ApplicationController
 
 
   private
+
+  def require_admin
+    unless current_user.admin?
+      redirect_to root_path, alert: "You are not authorized to access this page."
+    end
+  end
 
   def require_superadmin
     unless current_user.superadmin?
