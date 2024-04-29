@@ -1,30 +1,33 @@
-<div class="col-sm m-3">
-  <h4>Salary History</h4>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Title</th>
-        <th>Salary</th>
-        <th>Change Reason</th>
-        <th>Current Salary</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @user.salary_histories.order(change_date: :desc).each do |salary_history| %>
-        <tr>
-          <td><%= salary_history.change_date %></td>
-          <td><%= salary_history.job_title %></td>
-          <td>
-            <details>
-              <summary>Salary</summary>
-              <%= number_to_currency(salary_history.salary) %>
-            </details>
-          </td>
-          <td><%= salary_history.change_reason %></td>
-          <td><%= salary_history.current_salary %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Salary History</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Salary</th>
+            <th>Change Reason</th>
+            <th>Current Salary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.salary_histories.order(change_date: :desc).each do |salary_history| %>
+            <tr>
+              <td><%= salary_history.change_date %></td>
+              <td><%= salary_history.job_title %></td>
+              <td>
+                <details>
+                  <summary>Salary</summary>
+                  <%= number_to_currency(salary_history.salary) %>
+                </details>
+              </td>
+              <td><%= salary_history.change_reason %></td>
+              <td><%= salary_history.current_salary %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
