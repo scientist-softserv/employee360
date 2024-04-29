@@ -1,6 +1,5 @@
 class AdminDashboardController < ApplicationController
   before_action :require_admin
-  before_action :require_superadmin
 
   def index
     @users = User.all
