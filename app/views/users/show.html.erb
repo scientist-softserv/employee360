@@ -8,7 +8,7 @@
         <p class="card-text"><i class="bi bi-github"></i> <%= @user.github_handle %></p>
         <p class="card-text">Start Date: <%= @user.start_date %></p>
         <p>
-          <%= link_to @user.review_document, target: "_blank", class: "btn btn-primary" do %>
+          <%= link_to @user.review_document, target: "_blank", class: "btn btn-primary me-1" do %>
             <i class="bi bi-file-earmark-text"></i> Review Document
           <% end %>
         </p>
@@ -23,9 +23,9 @@
   </div>
 
   <div class="btn-group" role="group" aria-label="Basic example">
-    <%= button_to "Employee360 Portal", root_url, class: "btn btn-primary", method: :get %>
-    <%= button_to "Edit Profile", edit_user_path(@user), class: "btn btn-success", method: :get  %>
+    <%= button_to "Employee360 Portal", root_url, class: "btn btn-primary me-1", method: :get %>
+    <%= button_to "Edit Profile", edit_user_path(@user), class: "btn btn-success me-1", method: :get  %>
     <% if current_user.superadmin? %>
-      <%= button_to "Edit Salary History", user_salary_histories_path(@user, @salary_histories), class: "btn btn-warning", method: :get  %>
+      <%= button_to "Back to Salary Histories", user_salary_histories_path(@user, @salary_histories), class: "btn btn-warning me-1", method: :get  %>
     <% end %>
   </div>

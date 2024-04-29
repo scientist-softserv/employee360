@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def set_start_date
     @user = User.find(params[:id])
-    @user_title = @user.salary_histories.order(change_date: :desc)
+    @set_start_date = @user.salary_histories.order(change_date: :desc)
   end
 
   def user_params

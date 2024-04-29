@@ -1,11 +1,11 @@
 <h1 class="mt-3"><%= @salary_history.job_title %></h1>
 
-<p><strong>Salary:</strong> <%= @salary_history.salary %></p>
+<p><strong>Salary:</strong> <%= number_to_currency(@salary_history.salary) %></p>
 <p><strong>Change Date:</strong> <%= @salary_history.change_date %></p>
 <p><strong>Change Reason:</strong> <%= @salary_history.change_reason %></p>
 <p><strong>Current Salary:</strong> <%= @salary_history.current_salary %></p>
 <div class="btn-group" role="group" aria-label="Basic example">
-  <%= button_to "Edit", edit_user_salary_history_path(@user, @salary_history), class: "btn btn-secondary", method: :get %>
-  <%= button_to "Delete", user_salary_history_path(@user, @salary_history), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } %>
-  <%= button_to "Back to Salary Histories", user_salary_histories_path(@user, @salary_histories), class: "btn btn-success", method: :get %>
+  <%= button_to "Edit", edit_user_salary_history_path(@user, @salary_history), class: "btn btn-secondary me-1", method: :get %>
+  <%= button_to "Delete", user_salary_history_path(@user, @salary_history), class: "btn btn-danger me-1", method: :delete, data: { confirm: "Are you sure?" } %>
+  <%= button_to "Back to Salary Histories", user_salary_histories_path(@user, @salary_histories), class: "btn btn-success me-1", method: :get %>
 </div>
