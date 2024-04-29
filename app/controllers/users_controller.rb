@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if @user == current_user || current_user.admin?
+    if @user == current_user || current_user.superadmin? || current_user.admin?
     else
       redirect_to root_url, alert: 'Access denied.'
     end
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def set_start_date
     @user = User.find(params[:id])
-    @user_title = @user.salary_histories.order(change_date: :desc)
+    @set_start_date = @user.salary_histories.order(change_date: :desc)
   end
 
   def user_params

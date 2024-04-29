@@ -1,6 +1,6 @@
 <h1 class="mt-3"><%= @salary_history.job_title %></h1>
 
-<p><strong>Salary:</strong> <%= @salary_history.salary %></p>
+<p><strong>Salary:</strong> <%= number_to_currency(@salary_history.salary) %></p>
 <p><strong>Change Date:</strong> <%= @salary_history.change_date %></p>
 <p><strong>Change Reason:</strong> <%= @salary_history.change_reason %></p>
 <p><strong>Current Salary:</strong> <%= @salary_history.current_salary %></p>

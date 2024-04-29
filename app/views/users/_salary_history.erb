@@ -20,7 +20,7 @@
               <td>
                 <details>
                   <summary>Salary</summary>
-                  <%= salary_history.salary %>
+                  <%= number_to_currency(salary_history.salary) %>
                 </details>
               </td>
               <td><%= salary_history.change_reason %></td>
