@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
   has_many :goals
@@ -42,5 +42,9 @@ class User < ApplicationRecord
     # Find the latest salary history record
     salary_history = salary_histories.order(change_date: :desc).first
     salary_history&.salary
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "current_compensation", "due_for_promotion", "email", "github_handle", "id", "last_1_on_1", "last_promotion", "name", "next_1_on_1", "review_document", "role", "start_date", "title", "updated_at"]
   end
 end
