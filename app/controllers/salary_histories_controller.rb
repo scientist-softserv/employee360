@@ -33,7 +33,7 @@ class SalaryHistoriesController < ApplicationController
   end
 
   def edit
-    unless current_user.superadmin?
+    unless current_user.roles.include?('superadmin')
       flash[:alert] = "Only super administrators can edit salary histories."
       redirect_to root_path
       return
@@ -43,7 +43,7 @@ class SalaryHistoriesController < ApplicationController
   end
 
   def update
-    unless current_user.superadmin?
+    unless current_user.roles.include?('superadmin')
       flash[:alert] = "Only super administrators can update salary histories."
       redirect_to root_path
       return
@@ -81,14 +81,14 @@ class SalaryHistoriesController < ApplicationController
   end
 
   def authorize_user
-    unless @user == current_user || current_user.superadmin?
+    unless @user == current_user || current_user.roles.include?('superadmin')
       flash[:alert] = "You are not authorized to access this Salary History."
       redirect_to root_path
     end
   end
 
   def authorize_admin
-    unless current_user.superadmin?
+    unless current_user.roles.include?('superadmin')
       flash[:alert] = "Only super administrators can access this page."
       redirect_to root_path
     end

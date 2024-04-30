@@ -7,12 +7,20 @@ class User < ApplicationRecord
   has_many :goals
   has_many :salary_histories
 
-  enum role: { employee: 0, superadmin: 1, admin: 2 }
+  after_initialize :set_default_roles, if: :new_record?
 
-  after_initialize :set_default_role, :if => :new_record?
+  def set_default_roles
+    self.roles ||= []  # Initialize roles as an empty array if not present
+  end
 
-  def set_default_role
-    self.role ||= :employee
+  def add_role(role)
+    self.roles = (roles || []) + [role.to_s] unless roles&.include?(role.to_s)
+    self.roles.uniq!
+    save
+  end
+
+  def has_role?(role)
+    roles&.include?(role.to_s)
   end
 
   def start_date
