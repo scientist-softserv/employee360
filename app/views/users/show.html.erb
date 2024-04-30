@@ -25,7 +25,7 @@
   <div class="btn-group" role="group" aria-label="Basic example">
     <%= button_to "Employee360 Portal", root_url, class: "btn btn-primary me-1", method: :get %>
     <%= button_to "Edit Profile", edit_user_path(@user), class: "btn btn-success me-1", method: :get  %>
-    <% if current_user.superadmin? %>
+    <% if current_user.roles.include?(:superadmin) %>
       <%= button_to "Back to Salary Histories", user_salary_histories_path(@user, @salary_histories), class: "btn btn-warning me-1", method: :get  %>
     <% end %>
   </div>

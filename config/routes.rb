@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { passwords: 'users/passwords' }
+  devise_for :users
 
   get '/users/:id', to: 'users#show', as: 'user'
   get 'admin/dashboard', to: 'admin_dashboard#index', as: 'admin_dashboard'

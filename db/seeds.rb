@@ -13,7 +13,7 @@ superadmin_salary_history = SalaryHistory.create(
 if ENV['INITIAL_SUPER_ADMIN_EMAIL'] && ENV['INITIAL_SUPER_ADMIN_PASSWORD']
   superadmin = User.find_or_create_by(email: ENV['INITIAL_SUPER_ADMIN_EMAIL']) do |u|
     u.password = ENV['INITIAL_SUPER_ADMIN_PASSWORD']
-    u.role = 'superadmin'
+    u.roles = ['employee', 'superadmin']
     u.name = 'Super Admin User'
     u.github_handle = 'superadmin'
     u.review_document = 'https://example.com'
@@ -35,8 +35,8 @@ admin_salary_history = SalaryHistory.create(
 if ENV['INITIAL_ADMIN_EMAIL'] && ENV['INITIAL_ADMIN_PASSWORD']
   admin = User.find_or_create_by(email: ENV['INITIAL_ADMIN_EMAIL']) do |u|
     u.password = ENV['INITIAL_ADMIN_PASSWORD']
-    u.role = 'admin'
     u.name = 'Admin User'
+    u.roles = ['employee', 'admin']
     u.github_handle = 'admin'
     u.review_document = 'https://example.com'
   end
@@ -57,6 +57,7 @@ if ENV['INITIAL_USER_EMAIL'] && ENV['INITIAL_USER_PASSWORD']
   employee = User.find_or_create_by(email: ENV['INITIAL_USER_EMAIL']) do |u|
     u.password = ENV['INITIAL_USER_PASSWORD']
     u.name = 'Default Employee User'
+    u.roles = ['employee']
     u.github_handle = 'employee'
     u.review_document = 'https://example.com'
   end
